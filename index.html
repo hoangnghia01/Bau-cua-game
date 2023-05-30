@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arimo:wght@700&family=Comforter+Brush&family=Encode+Sans+Expanded:wght@700&family=Montserrat&family=Playfair+Display:ital@1&family=Roboto:wght@300;500&family=Sigmar+One&display=swap"
+        rel="stylesheet">
+    <title>Bau cua</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 500px;
+            height: 100vh;
+            border: 1px solid red;
+            border-radius: 30px;
+            text-align: center;
+            padding: 20px;
+            /* background: linear-gradient(to bottom, rgb(221, 20, 20), rgb(228, 54, 71)); */
+            background: url(./imgs/background.jpeg);
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: 'BẦU CUA';
+            top: 1%;
+            left: 1%;
+            display: block;
+            width: 250px;
+            height: 50px;
+            position: absolute;
+            color: #1ff902;
+            font-size: 40px;
+            z-index: 4;
+            font-family: 'Sigmar One', cursive;
+            /* background: #9de33c; */
+            border-radius: 20px;
+            border: 3px solid #ef233c;
+
+        }
+
+        .container .top {
+            width: 100%;
+            height: 400px;
+            /* border: 5px solid rgb(249, 13, 13); */
+            background-image: url(./imgs/hinhnen.jpeg);
+            background-size: 170%;
+            border-radius: 20px 20px 40px 40px;
+            position: relative;
+        }
+
+        .container .top .baucua {
+            width: 100%;
+            height: 350px;
+            /* border: 1px solid red; */
+        }
+
+        .container .top .baucua input {
+            width: 50px;
+            height: 50px;
+        }
+
+        .container .top #dia {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* border: 2px solid rgb(0, 255, 60); */
+            background: url(./imgs/dia.png);
+            background-size: 100%;
+            z-index: 0;
+
+        }
+
+        .container .top #dia.action {
+            animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+            /* transform: translate3d(0, 0, 0); */
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        @keyframes shake {
+
+            10%,
+            90% {
+                transform: translate3d(-49%, -50%, 0);
+            }
+
+            20%,
+            80% {
+                transform: translate3d(-52%, -50%, 0);
+            }
+
+            30%,
+            50%,
+            70% {
+                transform: translate3d(-52%, -50%, 0);
+            }
+
+            40%,
+            60% {
+                transform: translate3d(-48%, -50%, 0);
+            }
+        }
+
+        .container #dia table {
+            width: 50%;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .container #dia input {
+            width: 60px;
+            height: 60px;
+
+            border-radius: 10px;
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            color: #fff;
+            font-size: 20px;
+            overflow: hidden;
+
+
+        }
+
+        .container #dia img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        .container .top #bac {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: block;
+            background: url(./imgs/bat.png);
+            background-size: 100%;
+        }
+
+        .container .top #bac.action {
+            animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+            /* transform: translate3d(0, 0, 0); */
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        .container .top #bac.action2 {
+            transform: translate(30%, -80%);
+            transition: 1s;
+        }
+
+        .container .top .time {
+            width: 50%;
+            height: 25px;
+            margin: 0 auto;
+            border: 3px solid yellow;
+            border-radius: 25px;
+            position: absolute;
+            background: red;
+            color: #ffF;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .container .top #play {
+            width: 100px;
+            height: 40px;
+            margin-bottom: 5px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            background: yellow;
+            color: red;
+            cursor: pointer;
+            display: none;
+
+        }
+
+        .container .top #replay {
+            width: 100px;
+            height: 40px;
+            margin-bottom: 5px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            color: #ffffff;
+            background: green;
+            cursor: pointer;
+            display: none;
+
+        }
+
+        .container .top .tien {
+            width: 100%;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background: #000; */
+            margin-top: 10px;
+        }
+
+        .container .top .tien #tienthang_thua {
+            width: 90%;
+            height: 37px;
+            text-align: center;
+            font-size: 17px;
+            border: 2px solid #ecf239;
+            background: #873535;
+            font-size: 17px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            padding: 0 20px;
+            color: #fff;
+        }
+
+
+
+        .container .top .tien #sodu {
+            text-align: center;
+            width: 100%;
+            height: 37px;
+            border: 2px solid #ecf239;
+            background: #873535;
+            font-size: 17px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            padding: 0 20px;
+            color: #fff;
+        }
+
+        .container .mid {
+            width: 80%;
+            height: 90px;
+
+            margin: 0 auto;
+            margin-top: 0px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            /* border: 2px solid red; */
+        }
+
+        .container .mid input {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+
+        .container .bottom {
+            width: 100%;
+
+            margin: 0 auto;
+            margin-top: 10px;
+            /* border: #000 solid 2px; */
+        }
+
+        .container .bottom table {
+            width: 100%;
+
+        }
+
+        .container .bottom table.active {
+            pointer-events: none;
+        }
+
+        .container .bottom table input {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            color: #fff;
+            font-size: 20px;
+
+        }
+
+        .container .bottom #nai {
+            background: url(./imgs/nai.png);
+            background-size: 100%;
+        }
+
+        .container .bottom #bau {
+            background: url(./imgs/bau.png);
+            background-size: 100%;
+        }
+
+        .container .bottom #ga {
+            background: url(./imgs/ga.png);
+            background-size: 100%;
+        }
+
+        .container .bottom #ca {
+            background: url(./imgs/ca.png);
+            background-size: 100%;
+        }
+
+        .container .bottom #tom {
+            background: url(./imgs/tom.png);
+            background-size: 100%;
+        }
+
+        .container .bottom #cua {
+            background: url(./imgs/cua.png);
+            background-size: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="baucua">
+            </div>
+            <div class="time"></div>
+
+            <button id="play">PLAY</button>
+            <button id="replay" onclick="location.reload()">REPLAY</button>
+            <div class="tien">
+                <div><input type="number" value="" id="tienthang_thua"></div>
+                <div><input type="number" value="100000" id="sodu"></div>
+            </div>
+            <div id="dia">
+                <table>
+                    <tr>
+                        <td id="xx1"><input type="button" value=""></td>
+                        <td id="xx2"><input type="button" value=""></td>
+                        <td id="xx3"><input type="button" value=""></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="bac"></div>
+        </div>
+        <div class="mid">
+            <table>
+                <tr>
+                    <td><input type="radio" name="tien_cuoc" value="500">500</td>
+                    <td><input type="radio" name="tien_cuoc" value="1000">1K</td>
+                    <td><input type="radio" name="tien_cuoc" value="5000">5K</td>
+                    <td><input type="radio" name="tien_cuoc" value="10000">10k</td>
+                    <td><input type="radio" name="tien_cuoc" value="50000">50K</td>
+                </tr>
+            </table>
+        </div>
+        <div class="bottom">
+            <table>
+                <tr>
+                    <td><input type="button" value="" id="nai"></td>
+                    <td><input type="button" value="" id="bau"></td>
+                    <td><input type="button" value="" id="ga"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="" id="ca"></td>
+                    <td><input type="button" value="" id="cua"></td>
+                    <td><input type="button" value="" id="tom"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        //// dat cuoc
+        let sodu = document.querySelector('#sodu')
+        let thang_thua = document.querySelector('#tienthang_thua')
+        let muc_goi_ys = document.querySelectorAll('.container .mid input')
+        let dat_cuocs = document.querySelectorAll('.container .bottom input')
+
+
+        let indexMucCuoc = null;
+        for (let i = 0; i < muc_goi_ys.length; i++) {
+            muc_goi_ys[i].addEventListener('click', function () {
+                indexMucCuoc = i;
+            });
+        }
+        for (let j = 0; j < dat_cuocs.length; j++) {
+            dat_cuocs[j].addEventListener('click', function () {
+                if (indexMucCuoc !== null) {
+                    let currentValue = muc_goi_ys[indexMucCuoc].value;
+                    let currentDatcuoc = dat_cuocs[j].value;
+                    dat_cuocs[j].value = Number(currentDatcuoc) + Number(currentValue);
+                    //   indexMucCuoc = null;
+
+                    sodu.value = sodu.value - currentValue;
+                    console.log(dat_cuocs[j].value, j, sodu.value)
+                }
+                else {
+                    alert("VUI LÒNG CHỌN MỨC CƯỢC")
+                }
+            });
+        }
+
+        //set dong ho dem nguoc
+        // demnguoc();
+        // let times = document.querySelector('.container .top .time')
+        let so = 10;
+        let so_mo = 5;
+
+        function demnguoc() {
+            so--;
+            if (so >= 0) {
+                document.querySelector('.container .top .time').innerHTML = so + "s";
+                setTimeout(demnguoc, 1000);
+            } else {
+                demnguoc_mo();
+            }
+        }
+
+        function demnguoc_mo() {
+            so_mo--;
+            if (so_mo >= 0) {
+
+                document.querySelector('.container .top .time').innerHTML = "Chờ " + so_mo + "s";
+                setTimeout(demnguoc_mo, 1000);
+                //rung dia
+                let dia = document.querySelector('.container .top #dia')
+
+                dia.classList.add('action')
+
+                let bac = document.querySelector('.container .top #bac')
+                bac.classList.add('action')
+                bac.classList.remove('action2')
+
+
+            } else {
+                so_mo = 5;
+                choi();
+                so = 10;
+                demnguoc();
+                dia.classList.remove('action')
+                bac.classList.remove('action')
+                //mo bac
+                bac.classList.add('action2')
+
+
+            }
+        }
+
+        demnguoc();
+
+
+        let play = document.querySelector("#play")
+        play.addEventListener('click', choi)
+        function choi() {
+            //lac xuc xac
+
+            let xx1 = Math.floor(Math.random() * 6) + 1
+            let xx2 = Math.floor(Math.random() * 6) + 1
+            let xx3 = Math.floor(Math.random() * 6) + 1
+
+            document.querySelector(".container .top #xx1").innerHTML = '<input type="button" value="' + xx1 + '">';
+            document.querySelector(".container .top #xx2").innerHTML = '<input type="button" value="' + xx2 + '">';
+            document.querySelector(".container .top #xx3").innerHTML = '<input type="button" value="' + xx3 + '">';
+            console.log(xx1, xx2, xx3)
+
+
+            let arr = [
+                "./imgs/nai.png",
+                "./imgs/bau.png",
+                "./imgs/ga.png",
+                "./imgs/ca.png",
+                "./imgs/cua.png",
+                "./imgs/tom.png"
+            ]
+            let ketqua = document.querySelectorAll('.container #dia input');
+
+            let xx1Element = document.querySelector(".container .top #xx1");
+            let xx2Element = document.querySelector(".container .top #xx2");
+            let xx3Element = document.querySelector(".container .top #xx3");
+
+            xx1Element.innerHTML = `<img src="${arr[xx1 - 1]}" alt="ketqua1">`;
+            xx2Element.innerHTML = `<img src="${arr[xx2 - 1]}" alt="ketqua2">`;
+            xx3Element.innerHTML = `<img src="${arr[xx3 - 1]}" alt="ketqua3">`;
+
+
+
+
+
+            let t1 = 0;
+            let t2 = 0;
+            let t3 = 0;
+            let thang = 0;
+            if (xx1 != xx2 && xx1 != xx3 && xx2 != xx3) {
+                for (x = 0; x < dat_cuocs.length; x++) {
+                    if (xx1 == x + 1 && dat_cuocs[x].value !== 0) {
+                        t1 = dat_cuocs[x].value * 2;
+                        console.log("t1=", t1)
+
+                    }
+                    if (xx2 == x + 1 && dat_cuocs[x].value !== 0) {
+                        t2 = dat_cuocs[x].value * 2;
+                        console.log("t2=", t2)
+
+                    }
+                    if (xx3 == x + 1 && dat_cuocs[x].value !== 0) {
+                        t3 = dat_cuocs[x].value * 2;
+                        console.log("t3=", t3)
+
+                    }
+
+                }
+                thang = Number(t1) + Number(t2) + Number(t3);
+            }
+            if (xx1 == xx2 && xx2 == xx3) {
+                for (x = 0; x < dat_cuocs.length; x++) {
+                    if (xx1 == x + 1 && dat_cuocs[x].value !== 0) {
+                        t1 = dat_cuocs[x].value * 3 + Number(dat_cuocs[x].value);
+                        console.log("t1=", t1)
+
+                    }
+
+                }
+                thang = Number(t1);
+            }
+            if (xx1 == xx2 && xx1 != xx3) {
+                for (x = 0; x < dat_cuocs.length; x++) {
+                    if (xx1 == x + 1 && dat_cuocs[x].value !== 0) {
+                        t1 = Number(dat_cuocs[x].value) * 2 + Number(dat_cuocs[x].value);
+                        console.log("t1=", t1)
+
+                    }
+                    if (xx3 == x + 1 && dat_cuocs[x].value !== 0) {
+                        t3 = dat_cuocs[x].value * 2;
+                        console.log("t3=", t3)
+                    }
+                }
+                thang = Number(t1) + Number(t3);
+            }
+            if (xx1 == xx3 && xx1 != xx2) {
+                for (x = 0; x < dat_cuocs.length; x++) {
+                    if (xx1 == x + 1 && dat_cuocs[x].value !== 0) {
+                        t1 = Number(dat_cuocs[x].value) * 2 + Number(dat_cuocs[x].value);
+                        console.log("t1=", t1)
+
+                    }
+                    if (xx2 == x + 1 && dat_cuocs[x].value !== 0) {
+                        t2 = dat_cuocs[x].value * 2;
+                        console.log("t2=", t2)
+
+                    }
+
+                }
+                thang = Number(t1) + Number(t2);
+            }
+            if (xx2 == xx3 && xx2 != xx1) {
+                for (x = 0; x < dat_cuocs.length; x++) {
+                    if (xx2 == x + 1 && dat_cuocs[x].value !== 0) {
+                        t2 = Number(dat_cuocs[x].value) * 2 + Number(dat_cuocs[x].value);
+                        console.log("t2=", t2)
+
+                    }
+                    if (xx1 == x + 1 && dat_cuocs[x].value !== 0) {
+                        t1 = dat_cuocs[x].value * 2;
+                        console.log("t1=", t1)
+
+                    }
+                }
+                thang = Number(t2) + Number(t1);
+            }
+
+            for (let x = 0; x < dat_cuocs.length; x++) {
+                dat_cuocs[x].value = "";
+            }
+
+            console.log(thang)
+            thang_thua.value = thang;
+            sodu.value = Number(sodu.value) + thang;
+        }
+    </script>
+</body>
+
+</html>
